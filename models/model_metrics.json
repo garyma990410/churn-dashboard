@@ -1,0 +1,26 @@
+{
+  "Logistic Regression": {
+    "AUC": 0.9368,
+    "Recall": 0.5838,
+    "Precision": 0.7739,
+    "F1": 0.6655
+  },
+  "Random Forest": {
+    "AUC": 0.9315,
+    "Recall": 0.6259,
+    "Precision": 0.6853,
+    "F1": 0.6542
+  },
+  "XGBoost": {
+    "AUC": 0.9579,
+    "Recall": 0.6245,
+    "Precision": 0.8008,
+    "F1": 0.7018
+  },
+  "LightGBM": {
+    "AUC": 0.9609,
+    "Recall": 0.6312,
+    "Precision": 0.8088,
+    "F1": 0.7091
+  }
+}
