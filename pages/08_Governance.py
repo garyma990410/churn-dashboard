@@ -18,8 +18,8 @@ st.dataframe(log, use_container_width=True)
 st.markdown("---")
 st.subheader("Manual Review Queue · 待人工覆核名單")
 try:
-    df = pd.read_csv("outputs/customer_scores.csv")
+    df = pd.read_csv("outputs/customer_scores.csv", encoding='big5')
     review = df[df.get("risk_tier","") == "High"].sample(min(30, len(df)))
     st.dataframe(review.reset_index(drop=True), use_container_width=True)
 except:
-    st.info("Run `python train.py` to load customer scores.")
+    st.info("無法載入客戶評分資料。請確保已執行過 python train.py")

@@ -24,11 +24,12 @@ h1,h2,h3{color:#f1efff !important}
 """, unsafe_allow_html=True)
 
 pg = st.navigation([
-    st.Page("pages/01_Overview.py",          title="Overview",          icon="🏠"),
+    st.Page("pages/00_Home.py",              title="Home",              icon="🏠"),
+    st.Page("pages/01_Overview.py",          title="Overview",          icon="📊"),
     st.Page("pages/02_Data_Snapshot.py",     title="Data Snapshot",     icon="📋"),
     st.Page("pages/03_Model_Comparison.py",  title="Model Comparison",  icon="🤖"),
     st.Page("pages/04_Customer_Query.py",    title="Customer Query",     icon="🔍"),
-    st.Page("pages/05_Driver_Analysis.py",   title="Driver Analysis",    icon="📊"),
+    st.Page("pages/05_Driver_Analysis.py",   title="Driver Analysis",    icon="📈"),
     st.Page("pages/06_Retention_Strategy.py",title="Retention Strategy", icon="🎯"),
     st.Page("pages/07_Financial_Impact.py",  title="Financial Impact",   icon="💰"),
     st.Page("pages/08_Governance.py",        title="Governance",         icon="🔒"),

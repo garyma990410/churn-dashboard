@@ -6,7 +6,7 @@ from config import HIGH_RISK_THRESH
 
 @st.cache_data
 def load():
-    try: return pd.read_csv("outputs/customer_scores.csv")
+    try: return pd.read_csv("outputs/customer_scores.csv", encoding='big5')
     except FileNotFoundError: return pd.DataFrame()
 
 df = load()
@@ -14,7 +14,7 @@ st.title("Overview")
 st.caption("客戶流失預警總覽")
 
 if df.empty:
-    st.warning("Run `python train.py` first to generate model outputs.")
+    st.error("無法載入客戶數據。請確保已執行過 python train.py 並生成了 outputs/customer_scores.csv")
     st.stop()
 
 total        = len(df)

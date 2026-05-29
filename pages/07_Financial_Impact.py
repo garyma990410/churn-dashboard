@@ -6,7 +6,7 @@ from config import (DEFAULT_MONTHLY_REVENUE, DEFAULT_EXTENSION_MONTHS,
 
 @st.cache_data
 def load():
-    try: return pd.read_csv("outputs/customer_scores.csv")
+    try: return pd.read_csv("outputs/customer_scores.csv", encoding='big5')
     except: return pd.DataFrame()
 
 df = load()
@@ -25,7 +25,7 @@ deploy_cost = st.sidebar.number_input("System Deployment Cost (USD) 系統導入
                                        value=52000, step=1000)
 
 if df.empty:
-    st.warning("Run `python train.py` first."); st.stop()
+    st.error("無法載入客戶數據。請確保已執行過 python train.py"); st.stop()
 
 if "risk_tier" in df.columns:
     high_risk = len(df[df["risk_tier"]=="High"])

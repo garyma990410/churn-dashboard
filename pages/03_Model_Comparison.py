@@ -24,4 +24,4 @@ try:
     c3.metric("Recall 召回率", b["Recall"])
     c4.metric("F1", b["F1"])
 except FileNotFoundError:
-    st.warning("Run `python train.py` to generate model metrics.")
+    st.error("無法載入模型指標檔案。請確保已執行過 python train.py")

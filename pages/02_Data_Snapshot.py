@@ -5,8 +5,8 @@ from utils.plotting import dark_layout, DARK_BG, SURFACE, COLORS
 
 @st.cache_data
 def load():
-    try: return pd.read_csv("outputs/customer_scores.csv")
-    except: return pd.read_csv("data/抽樣後.csv")
+    try: return pd.read_csv("outputs/customer_scores.csv", encoding='big5')
+    except: return pd.read_csv("data/抽樣後.csv", encoding='big5')
 
 df = load()
 st.title("Data Snapshot")

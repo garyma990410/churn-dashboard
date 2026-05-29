@@ -12,7 +12,7 @@ FEATS = FEATURE_COLS + ["high_cancel_risk","activity_ratio","payment_low"]
 
 @st.cache_data
 def load():
-    try: return pd.read_csv("outputs/customer_scores.csv")
+    try: return pd.read_csv("outputs/customer_scores.csv", encoding='big5')
     except: return pd.DataFrame()
 
 @st.cache_resource
@@ -25,7 +25,7 @@ df = load()
 clf = load_model()
 
 if df.empty or clf is None:
-    st.warning("Run `python train.py` first."); st.stop()
+    st.error("無法載入客戶數據或模型。請確保已執行過 python train.py"); st.stop()
 
 feats_in_df = [c for c in FEATS if c in df.columns]
 importances = clf.feature_importances_ if hasattr(clf,"feature_importances_") else np.zeros(len(feats_in_df))

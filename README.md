@@ -2,19 +2,38 @@
 ## 客戶洞察與留存管理系統
 
 ### Quick Start
+
+#### 使用預訓練模型（推薦）
 ```bash
 pip install -r requirements.txt
 
-# 1. Place your CSVs in data/
+# 直接啟動儀表板（使用已訓練的模型）
+streamlit run app.py
+```
+
+#### 從頭訓練新模型
+```bash
+pip install -r requirements.txt
+
+# 1. 將資料放在 data/ 目錄
 #    data/抽樣後.csv   (30% sample → training)
 #    data/full_data.csv  (full ~970k rows → dashboard display)
 
-# 2. Train models
+# 2. 訓練模型（第一次或更新資料時執行）
 python train.py
 
-# 3. Launch dashboard
+# 3. 啟動儀表板
 streamlit run app.py
 ```
+
+**訓練完成後的文件：**
+- `models/logistic_regression.pkl` - Logistic Regression 模型
+- `models/random_forest.pkl` - Random Forest 模型
+- `models/xgboost.pkl` - XGBoost 模型
+- `models/lightgbm.pkl` - LightGBM 模型（生產環境使用）
+- `outputs/customer_scores.csv` - 所有客戶的流失評分和風險分級
+- `outputs/model_comparison.csv` - 模型評估指標對比
+- `models/model_metrics.json` - 詳細的模型性能指標
 
 ### Deploying to Streamlit Community Cloud
 1. Push this folder to a public GitHub repository.

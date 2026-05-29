@@ -5,7 +5,7 @@ from utils.plotting import risk_gauge
 
 @st.cache_data
 def load():
-    try: return pd.read_csv("outputs/customer_scores.csv")
+    try: return pd.read_csv("outputs/customer_scores.csv", encoding='big5')
     except: return pd.DataFrame()
 
 df = load()
@@ -16,7 +16,7 @@ st.sidebar.markdown("## 🔍 Customer Search 客戶查詢")
 query = st.sidebar.text_input("Enter msno / Customer ID")
 
 if df.empty:
-    st.warning("Run `python train.py` first."); st.stop()
+    st.error("無法載入客戶數據。請確保已執行過 python train.py"); st.stop()
 
 if query:
     row = df[df["msno"].astype(str).str.contains(query, case=False, na=False)]

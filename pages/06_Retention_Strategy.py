@@ -5,7 +5,7 @@ from utils.plotting import DARK_BG, SURFACE, COLORS
 
 @st.cache_data
 def load():
-    try: return pd.read_csv("outputs/customer_scores.csv")
+    try: return pd.read_csv("outputs/customer_scores.csv", encoding='big5')
     except: return pd.DataFrame()
 
 df = load()
@@ -13,10 +13,10 @@ st.title("Retention Strategy")
 st.caption("續留策略")
 
 if df.empty:
-    st.warning("Run `python train.py` first."); st.stop()
+    st.error("無法載入客戶數據。請確保已執行過 python train.py"); st.stop()
 
 if "risk_tier" not in df.columns or "value_tier" not in df.columns:
-    st.warning("Risk/value tiers not found. Run train.py."); st.stop()
+    st.error("風險分級和價值分級欄位不存在。請確保已執行過 python train.py"); st.stop()
 
 segments = {
     ("High","High Value"):  ("Priority Retention 優先挽留",   "#8b5cf6", "專屬客服 · 首月半價折扣 · 綁卡優惠"),
